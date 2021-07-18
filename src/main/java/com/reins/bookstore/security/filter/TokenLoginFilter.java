@@ -28,7 +28,7 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
 
     public TokenLoginFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
-        this.setPostOnly(true);
+        this.setPostOnly(false);
         this.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/login", "POST"));
     }
 
@@ -56,7 +56,8 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
         String token = JwtTokenUtils.createToken(user.getUsername(), authrorities);
         HashMap<Object, Object> map = new HashMap<>();
         map.put("token", token);
-        map.put("username", user.getUsername());
+        map.put("userRoles", user.getAuthorities());
+        map.put("userName", user.getUsername());
         ResponseUtils.out(response, ResultDTO.success(map));
     }
 

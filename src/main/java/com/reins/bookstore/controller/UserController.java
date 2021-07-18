@@ -25,6 +25,7 @@ public class UserController {
 
     @RequestMapping("/checkAuth")
     public UserInfo checkAuth(){
+        System.out.println("123");
         Optional<UserInfo> userInfoOptional =  userService.getUserInfo(SecurityUtils.getCurrentUsername());
         return userInfoOptional.orElse(null);
     }

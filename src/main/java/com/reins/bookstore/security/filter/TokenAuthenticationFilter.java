@@ -27,7 +27,8 @@ public class TokenAuthenticationFilter extends BasicAuthenticationFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-        System.out.println("invoking: ==========" + request.getRequestURI());
+        logger.info("invoking: ==========" + request.getRequestURI());
+
         UsernamePasswordAuthenticationToken authentication = null;
         try {
             authentication = getAuthentication(request);
@@ -36,11 +37,11 @@ public class TokenAuthenticationFilter extends BasicAuthenticationFilter {
         }
         if (authentication != null) {
             SecurityContextHolder.getContext().setAuthentication(authentication);
+            chain.doFilter(request, response);
         } else {
             ResponseUtils.out(response, ResultDTO.error("authentication failure"));
         }
 
-        chain.doFilter(request, response);
     }
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
