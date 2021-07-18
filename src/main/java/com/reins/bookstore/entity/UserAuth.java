@@ -26,11 +26,8 @@ public class UserAuth {
     @Id
     private Integer userId;
     private String username;
-
-    @Transient
     private String password;
 
-    private Integer userType;
 
     public Integer getUserId() {
         return userId;
@@ -54,13 +51,5 @@ public class UserAuth {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Integer getUserType() {
-        return userType;
-    }
-
-    public void setUserType(Integer userType) {
-        this.userType = userType;
     }
 }

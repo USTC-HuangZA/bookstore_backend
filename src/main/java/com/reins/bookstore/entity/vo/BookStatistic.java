@@ -1,4 +1,4 @@
-package com.reins.bookstore.vo;
+package com.reins.bookstore.entity.vo;
 
 /**
  * @author ziang

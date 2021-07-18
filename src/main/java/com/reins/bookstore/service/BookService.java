@@ -2,7 +2,7 @@ package com.reins.bookstore.service;
 
 import com.reins.bookstore.entity.Book;
 import com.reins.bookstore.entity.Image;
-import com.reins.bookstore.vo.BookStatistic;
+import com.reins.bookstore.entity.vo.BookStatistic;
 
 import java.util.List;
 

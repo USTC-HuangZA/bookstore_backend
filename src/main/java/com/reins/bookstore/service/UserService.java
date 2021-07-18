@@ -1,9 +1,11 @@
 package com.reins.bookstore.service;
 
-import com.reins.bookstore.entity.UserAuth;
+import com.reins.bookstore.entity.UserInfo;
+
+import java.util.Optional;
 
 
 public interface UserService {
 
-    UserAuth checkUser(String username, String password);
+    Optional<UserInfo> getUserInfo(String userName);
 }

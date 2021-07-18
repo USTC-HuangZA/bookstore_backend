@@ -4,7 +4,7 @@ import com.reins.bookstore.dao.BookDao;
 import com.reins.bookstore.entity.Book;
 import com.reins.bookstore.entity.Image;
 import com.reins.bookstore.service.BookService;
-import com.reins.bookstore.vo.BookStatistic;
+import com.reins.bookstore.entity.vo.BookStatistic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

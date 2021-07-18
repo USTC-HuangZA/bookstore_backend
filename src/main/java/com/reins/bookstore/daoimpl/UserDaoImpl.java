@@ -1,12 +1,13 @@
 package com.reins.bookstore.daoimpl;
 
-import com.reins.bookstore.constant.Constant;
 import com.reins.bookstore.dao.UserDao;
-import com.reins.bookstore.entity.UserAuth;
+import com.reins.bookstore.entity.UserInfo;
 import com.reins.bookstore.repository.UserAuthRepository;
 import com.reins.bookstore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 /**
  * @ClassName UserDaoImpl
@@ -23,11 +24,14 @@ public class UserDaoImpl implements UserDao {
     @Autowired
     UserRepository userRepository;
 
+
+
     @Override
-    public UserAuth checkUser(String username, String password){
-
-        return userAuthRepository.checkUser(username,password);
+    public Optional<UserInfo> getUserByUsername(String username) {
+        Integer userId = userAuthRepository.findUserIdByUserName(username);
+        if(userId !=null){
+            return userRepository.findById(userId);
+        }
+        return Optional.empty();
     }
-
-
 }

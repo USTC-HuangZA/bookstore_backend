@@ -1,8 +1,10 @@
 package com.reins.bookstore.dao;
 
-import com.reins.bookstore.entity.UserAuth;
+import com.reins.bookstore.entity.UserInfo;
+
+import java.util.Optional;
 
 public interface UserDao {
 
-    UserAuth checkUser(String username, String password);
+    Optional<UserInfo> getUserByUsername(String username);
 }

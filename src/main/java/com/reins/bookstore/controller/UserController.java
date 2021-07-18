@@ -1,11 +1,14 @@
 package com.reins.bookstore.controller;
 
-import com.reins.bookstore.entity.UserAuth;
+import com.reins.bookstore.entity.UserInfo;
+import com.reins.bookstore.security.SecurityUtils;
 import com.reins.bookstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
 
 /**
  * @ClassName UserController
@@ -19,11 +22,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/checkUser")
-    public UserAuth checkUser(@RequestParam("username") String username,@RequestParam("password") String password){
-        return userService.checkUser(username, password);
+
+    @RequestMapping("/checkAuth")
+    public UserInfo checkAuth(){
+        Optional<UserInfo> userInfoOptional =  userService.getUserInfo(SecurityUtils.getCurrentUsername());
+        return userInfoOptional.orElse(null);
     }
-
-
 
 }

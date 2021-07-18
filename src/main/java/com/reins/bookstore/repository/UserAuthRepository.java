@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 
-public interface UserAuthRepository extends JpaRepository<UserAuth,String>{
+public interface UserAuthRepository extends JpaRepository<UserAuth,Integer>{
 
-    @Query(value = "from UserAuth where username = :username and password = :password")
-    UserAuth checkUser(@Param("username") String username, @Param("password") String password);
+    @Query(value = "select userId from UserAuth where username = :username")
+    Integer findUserIdByUserName(@Param("username") String username);
 
 }

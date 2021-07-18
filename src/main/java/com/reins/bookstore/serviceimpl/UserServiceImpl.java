@@ -1,10 +1,12 @@
 package com.reins.bookstore.serviceimpl;
 
 import com.reins.bookstore.dao.UserDao;
-import com.reins.bookstore.entity.UserAuth;
+import com.reins.bookstore.entity.UserInfo;
 import com.reins.bookstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 /**
  * @ClassName UserServiceImpl
@@ -19,7 +21,7 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public UserAuth checkUser(String username, String password){
-        return userDao.checkUser(username,password);
+    public Optional<UserInfo> getUserInfo(String userName){
+        return userDao.getUserByUsername(userName);
     }
 }
