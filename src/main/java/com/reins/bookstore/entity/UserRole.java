@@ -12,7 +12,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "userRole")
 @JsonIgnoreProperties(value = {"handler","hibernateLazyInitializer","fieldHandler"})
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 public class UserRole {
     @Id
     @JsonIgnore
